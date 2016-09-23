@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -20,12 +22,20 @@ Route::get('/register', function() {
 	return view('register', ['users' => $users]);
 });
 
-Route::post('/register', function() {
-	$newUser = DB::table('users')->insert([
-		'name' => $_POST['username'],
-		'password' => $_POST['password'],
-		'email' => $_POST['email']
-	]);
+Route::post('/register', function(Request $request) {
+	// $newUser = DB::table('users')->insert([
+	// 	'name' => $_POST['username'],
+	// 	'password' => bcrypt($_POST['password']),
+	// 	'email' => $_POST['email']
+	// ]);
+
+	$user = new App\User();
+
+	$user->fill($request->all());
+
+	$user->password = bcrypt($request->password);
+
+	$user->save();
 
 	return redirect('/login');
 
@@ -35,26 +45,5 @@ Route::get('/login', function() {
 	return view('login');
 });
 
-Route::post('/login', function() {
-	
-
-
-	$users = DB::table('users')->where('name', $_POST['username'] && 'password', $_POST['password']);
-
-
-	if($users) {
-
-		foreach($users as $user) {
-			{{ $user->name }}
-			{{ $user->password }}
-		}
-
-
-		echo "You have sucessfully logged in!<br />";
-		echo $_POST['username'] . "<br />";
-		echo $_POST['password'];
-
-	}
-
-});
+Route::post('/login', "AuthController@handleLogin");
 

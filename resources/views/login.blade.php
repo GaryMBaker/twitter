@@ -11,7 +11,7 @@
 		<h1>Login To Twitter:</h1>
 		<form action="/login" method="POST">
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<input type="text" name="username" class="form-control" placeholder="Username">
+			<input type="text" name="name" class="form-control" placeholder="Username">
 			<input type="password" name="password" class="form-control" placeholder="Password">
 			<input type="submit" value="Register" class="btn btn-primary">
 		</form>

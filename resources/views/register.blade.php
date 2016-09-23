@@ -13,7 +13,7 @@
 
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-			<input type="text" name="username" class="form-control" placeholder="Username">
+			<input type="text" name="name" class="form-control" placeholder="Username">
 			<input type="password" name="password" class="form-control" placeholder="Password">
 			<input type="email" name="email" class="form-control" placeholder="Email">
 			<input type="submit" value="Register" class="btn btn-primary">
