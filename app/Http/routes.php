@@ -13,37 +13,16 @@
 
 use Illuminate\Http\Request;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::auth();
 
-Route::get('/register', function() {
-	$users = DB::table('users')->get();
-	return view('register', ['users' => $users]);
-});
+Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
-Route::post('/register', function(Request $request) {
-	// $newUser = DB::table('users')->insert([
-	// 	'name' => $_POST['username'],
-	// 	'password' => bcrypt($_POST['password']),
-	// 	'email' => $_POST['email']
-	// ]);
+Route::post('/createPost', 'HomeController@newPost');
 
-	$user = new App\User();
+Route::get('/viewPosts', 'HomeController@viewPosts');
 
-	$user->fill($request->all());
+Route::get('/edit/{id}', 'HomeController@edit');
 
-	$user->password = bcrypt($request->password);
-
-	$user->save();
-
-	return redirect('/login');
-
-});
-
-Route::get('/login', function() {
-	return view('login');
-});
-
-Route::post('/login', "AuthController@handleLogin");
-
+Route::post('editPost/{id}', 'HomeController@editPost');
+Route::get('delete/{id}', 'HomeController@deletePost');
