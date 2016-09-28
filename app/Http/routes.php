@@ -24,5 +24,20 @@ Route::get('/viewPosts', 'HomeController@viewPosts');
 
 Route::get('/edit/{id}', 'HomeController@edit');
 
-Route::post('editPost/{id}', 'HomeController@editPost');
-Route::get('delete/{id}', 'HomeController@deletePost');
+Route::post('/editPost/{id}', 'HomeController@editPost');
+Route::get('/delete/{id}', 'HomeController@deletePost');
+
+
+Route::get('/user/{id}', 'HomeController@user');
+Route::get('/all', 'HomeController@viewAllPosts');
+
+Route::get('/users', 'HomeController@usersList');
+Route::get('/follow/{id}', 'HomeController@follow');
+
+
+// from here i need to make a new table inside of the database
+// for a followers list and following list for each user for
+// their friends listings...
+//
+// idk just like the multi line comments hahha...
+// 

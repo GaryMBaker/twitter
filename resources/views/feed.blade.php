@@ -11,6 +11,7 @@
  --}}
 
 
+
 <form action="/createPost" method="POST">
 
 	{{ csrf_field() }}
@@ -19,6 +20,7 @@
 	<br />
 	<label for="content">Content:</label>
 	<input type="text" name="content" class="form-control">
+	<br />
 	<input type="submit" value="Make Post!" class="btn btn-primary">
 
 </form>

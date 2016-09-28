@@ -9,6 +9,7 @@ use App\User;
 use App\Post;
 use Auth;
 
+
 class HomeController extends Controller
 {
     /**
@@ -26,11 +27,38 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function follow($id) {
+        return $id;
+    }
+
+    public function usersList() {
+        $users = User::all();
+        return view('usersList', ['users' => $users]);
+    }
+
+    public function viewAllPosts() 
     {
         $users = User::all();
         $posts = Post::all();
         return view('home', ['users' => $users, 'posts' => $posts]);
+    }
+
+
+
+    public function index()
+    {
+        $user = Auth::User();
+        $userId = $user->id;
+
+        return redirect()->action('HomeController@user', [$userId]);
+    }
+
+
+    public function user($id) 
+    {
+        $posts = Post::find($id);
+        return view('userPage', ['posts' => $posts]);
     }
 
 
@@ -54,7 +82,8 @@ class HomeController extends Controller
     //     return view('home', ['posts' => $posts]);
     // }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $post = Post::find($id);
 
         return view('editPost', ['post' => $post]);

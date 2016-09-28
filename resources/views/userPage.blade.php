@@ -9,17 +9,20 @@
 
                 <div class="panel-body">
 					@include('feed')
-                    <hr />
+                    
+
+                    
                     <h3>Here are your posts!</h3>
                     <ul>
-                    @foreach ($posts as $post)
+                    {{-- @foreach ($posts as $post) --}}
                         <li>
-                            <h3>{{ $post->title }}</h3>
-                            <p>{{ $post->content }}</p>
-                            <p>Posted by: {{ $post->user_id }}</p>
-                            <a href="/edit/{{ $post->id }}" class="btn btn-warning">Edit</a>
+                            <h3>{{ $posts->title }}</h3>
+                            <p>{{ $posts->content }}</p>
+                            <p>Posted by: {{ $posts->user_id }}</p>
+                            <a href="/edit/{{ $posts->id }}" class="btn btn-warning">Edit</a>
+                            <a href="/delete/{{ $posts->id }}" class="btn btn-danger">Delete</a>
                         </li>
-                    @endforeach
+                    {{-- @endforeach --}}
 					</ul>
 
                 </div>

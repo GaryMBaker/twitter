@@ -23,6 +23,10 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+        ul {
+            list-style: none;
+        }
     </style>
 </head>
 <body id="app-layout">
@@ -40,14 +44,18 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Twitter
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/home') }}">Your Page!</a></li>
+                    <li><a href="{{ url('/all') }}">All posts Feed!</a></li>
+                    <li><a href="{{ url('/followers') }}">See your Followers!</a></li>
+                    <li><a href="{{ url('/following') }}">See who's following you!</a></li>
+                    <li><a href="{{ url('/users') }}">Users Your might know!</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
